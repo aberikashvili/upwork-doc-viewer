@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-doc-viewer-header',
@@ -8,4 +14,15 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class DocViewerHeaderComponent {
   @Input() title!: string;
+
+  @Output() zoomedIn: EventEmitter<void> = new EventEmitter();
+  @Output() zoomedOut: EventEmitter<void> = new EventEmitter();
+
+  zoomIn(): void {
+    this.zoomedIn.emit();
+  }
+
+  zoomOut(): void {
+    this.zoomedOut.emit();
+  }
 }
