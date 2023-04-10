@@ -1,0 +1,11 @@
+<div class="page">
+  <img
+    [attr.src]="page.image"
+    [attr.alt]="'Page number ' + page.index + ' cannot be displayed!'"
+  />
+
+  <app-doc-viewer-note
+    *ngFor="let note of page.notes"
+    [note]="note"
+  ></app-doc-viewer-note>
+</div>

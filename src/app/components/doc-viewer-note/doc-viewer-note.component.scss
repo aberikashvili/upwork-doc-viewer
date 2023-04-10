@@ -1,0 +1,25 @@
+.note {
+  position: absolute;
+
+  background-color: #ffec3c;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: #333;
+  cursor: pointer;
+
+  &--edit-mode {
+    background-color: #9ce5ff;
+  }
+
+  &__delete {
+    background-color: #ff3c3c;
+    color: #ffffff;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+}

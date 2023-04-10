@@ -4,6 +4,9 @@
   display: flex;
   justify-content: space-between;
   padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
 
   &--green {
     background-color: #0cdb95;
