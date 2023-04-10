@@ -7,17 +7,23 @@ import { DocViewerHeaderComponent } from './components/doc-viewer-header/doc-vie
 import { DocViewerPagesComponent } from './components/doc-viewer-pages/doc-viewer-pages.component';
 import { DocViewerPageComponent } from './components/doc-viewer-page/doc-viewer-page.component';
 import { DocViewerNoteComponent } from './components/doc-viewer-note/doc-viewer-note.component';
+import { FormsModule } from '@angular/forms';
+import { AsPercentPipe } from './pipes/as-percent.pipe';
 
 @NgModule({
   declarations: [
+    // Components
     AppComponent,
     DocViewerComponent,
     DocViewerHeaderComponent,
     DocViewerPagesComponent,
     DocViewerPageComponent,
     DocViewerNoteComponent,
+
+    // Pipes
+    AsPercentPipe,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

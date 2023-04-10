@@ -14,6 +14,7 @@ import {
 })
 export class DocViewerHeaderComponent {
   @Input() title!: string;
+  @Input() percentage!: number;
 
   @Output() zoomedIn: EventEmitter<void> = new EventEmitter();
   @Output() zoomedOut: EventEmitter<void> = new EventEmitter();

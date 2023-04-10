@@ -1,13 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   Input,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { DEFAULT_ZOOM, ZOOM_STEP } from 'src/app/constants/zoom.constants';
+import {
+  DEFAULT_ZOOM,
+  MAX_ZOOM,
+  MIN_ZOOM,
+  ZOOM_STEP,
+} from 'src/app/constants/zoom.constants';
 import { DocumentEntry } from 'src/app/models/document-entry.model';
 import { DocViewerPagesComponent } from '../doc-viewer-pages/doc-viewer-pages.component';
 
@@ -19,9 +23,9 @@ import { DocViewerPagesComponent } from '../doc-viewer-pages/doc-viewer-pages.co
 export class DocViewerComponent implements OnInit, OnDestroy {
   @Input() documentObj!: DocumentEntry;
 
-  @ViewChild(DocViewerPagesComponent) pagesWrapper!: ElementRef;
+  @ViewChild(DocViewerPagesComponent) pagesWrapper!: DocViewerPagesComponent;
 
-  private _currentZoom: number = DEFAULT_ZOOM;
+  currentZoom: number = DEFAULT_ZOOM;
 
   ngOnInit(): void {
     console.log(this.documentObj);
@@ -30,29 +34,24 @@ export class DocViewerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   onZoomIn(): void {
-    this._currentZoom = this._currentZoom + ZOOM_STEP;
-    this.setZoom(this._currentZoom, this.pagesWrapper.nativeElement);
+    this.currentZoom = this.currentZoom + ZOOM_STEP;
+
+    if (this.currentZoom > MAX_ZOOM) {
+      this.currentZoom -= ZOOM_STEP;
+      return;
+    }
+
+    this.pagesWrapper.setZoom(this.currentZoom);
   }
 
   onZoomOut(): void {
-    this._currentZoom = this._currentZoom - ZOOM_STEP;
-    this.setZoom(this._currentZoom, this.pagesWrapper.nativeElement);
-  }
+    this.currentZoom = this.currentZoom - ZOOM_STEP;
 
-  setZoom(zoom: number, el: any): void {
-    const transformOrigin = [0, 0];
-    // el = el || instance.getContainer();
-    var p = ['webkit', 'moz', 'ms', 'o'],
-      s = 'scale(' + zoom + ')',
-      oString =
-        transformOrigin[0] * 100 + '% ' + transformOrigin[1] * 100 + '%';
-
-    for (var i = 0; i < p.length; i++) {
-      el.style[p[i] + 'Transform'] = s;
-      el.style[p[i] + 'TransformOrigin'] = oString;
+    if (this.currentZoom < MIN_ZOOM) {
+      this.currentZoom += ZOOM_STEP;
+      return;
     }
 
-    el.style['transform'] = s;
-    el.style['transformOrigin'] = oString;
+    this.pagesWrapper.setZoom(this.currentZoom);
   }
 }

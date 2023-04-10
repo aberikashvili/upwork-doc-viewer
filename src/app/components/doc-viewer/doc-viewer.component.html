@@ -1,6 +1,12 @@
 <app-doc-viewer-header
   [title]="documentObj.title"
+  [percentage]="currentZoom"
   (zoomedIn)="onZoomIn()"
   (zoomedOut)="onZoomOut()"
 ></app-doc-viewer-header>
-<app-doc-viewer-pages [pages]="documentObj.pages"></app-doc-viewer-pages>
+<div style="overflow-x: scroll">
+  <app-doc-viewer-pages
+    #pagesWrapper
+    [pages]="documentObj.pages"
+  ></app-doc-viewer-pages>
+</div>

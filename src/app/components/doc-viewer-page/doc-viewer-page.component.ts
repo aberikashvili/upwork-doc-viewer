@@ -18,4 +18,8 @@ export class DocViewerPageComponent implements OnInit {
   ngOnInit(): void {
     console.log('PAGE', this.page);
   }
+
+  pageCliked(event: MouseEvent): void {
+    debugger;
+  }
 }

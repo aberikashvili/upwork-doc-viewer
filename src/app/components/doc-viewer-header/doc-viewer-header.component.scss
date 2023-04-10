@@ -23,4 +23,13 @@
       margin: 0 2px;
     }
   }
+
+  &__zoom {
+    background-color: #46ffc1;
+    margin: 0 5px;
+    padding: 5px;
+    font-size: $font-size-regular;
+    border-radius: 4px;
+    color: #333333;
+  }
 }
