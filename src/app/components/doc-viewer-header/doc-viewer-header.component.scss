@@ -1,0 +1,23 @@
+@import "typography";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  &--green {
+    background-color: #0cdb95;
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: $font-size-title;
+    font-weight: bold;
+  }
+
+  &__actions {
+    button {
+      margin: 0 2px;
+    }
+  }
+}
