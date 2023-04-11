@@ -5,6 +5,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { DocumentNoteEntry } from 'src/app/models/document-note-entry.model';
+import { NullableNoteType } from 'src/app/types/note-nullable.type';
+import { NoteType } from 'src/app/types/note.type';
 
 @Component({
   selector: 'app-doc-viewer-note-wizard',
@@ -15,11 +17,11 @@ import { DocumentNoteEntry } from 'src/app/models/document-note-entry.model';
 export class DocViewerNoteWizardComponent {
   @Output() created: EventEmitter<DocumentNoteEntry> = new EventEmitter();
 
-  noteType: 'text' | 'image' | null = null;
+  noteType: NullableNoteType = null;
 
   noteValue: string | ArrayBuffer | null = null;
 
-  setType(option: 'text' | 'image'): void {
+  setType(option: NoteType): void {
     this.noteType = option;
   }
 
