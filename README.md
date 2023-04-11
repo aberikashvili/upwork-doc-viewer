@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 
+## Depenencies
+
+This project is developed on node v18 and Angular 15
+
+## Branch
+
+To run the app:
+
+- please checkout branch `origin/implement-doc-viewer`
+- run `npm install`
+- run `npm start`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
