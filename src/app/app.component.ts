@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as uuid from 'uuid';
 import { DocumentEntry } from './models/document-entry.model';
 
 @Component({
@@ -13,13 +14,27 @@ export class AppComponent {
       {
         index: 1,
         image: '/assets/1.png',
-        notes: [{ type: 'text', content: 'test note', posX: 100, posY: 100 }],
+        notes: [
+          {
+            uuid: uuid.v4(),
+            type: 'text',
+            content: 'test note',
+            posX: 100,
+            posY: 100,
+          },
+        ],
       },
       {
         index: 2,
         image: '/assets/2.png',
         notes: [
-          { type: 'text', content: '2nd page note', posX: 340, posY: 230 },
+          {
+            uuid: uuid.v4(),
+            type: 'text',
+            content: '2nd page note',
+            posX: 340,
+            posY: 230,
+          },
         ],
       },
       { index: 3, image: '/assets/3.png', notes: [] },

@@ -10,7 +10,7 @@ import { NotePositionEntry } from 'src/app/models/note-position-entry.model';
 export class DocViewerNoteComponent {
   @Input() note!: DocumentNoteEntry;
 
-  @Output() removed: EventEmitter<void> = new EventEmitter();
+  @Output() removed: EventEmitter<string> = new EventEmitter();
 
   get position(): NotePositionEntry {
     return {
@@ -28,7 +28,7 @@ export class DocViewerNoteComponent {
   }
 
   remove(): void {
-    this.removed.emit();
+    this.removed.emit(this.note.uuid);
   }
 
   noteCreated(note: DocumentNoteEntry): void {

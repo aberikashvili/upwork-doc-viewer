@@ -1,4 +1,6 @@
 export interface DocumentNoteEntry {
+  uuid: string;
+
   type: 'text' | 'image';
 
   /**
