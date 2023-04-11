@@ -18,6 +18,7 @@ export class DocViewerHeaderComponent {
 
   @Output() zoomedIn: EventEmitter<void> = new EventEmitter();
   @Output() zoomedOut: EventEmitter<void> = new EventEmitter();
+  @Output() saved: EventEmitter<void> = new EventEmitter();
 
   zoomIn(): void {
     this.zoomedIn.emit();
@@ -25,5 +26,9 @@ export class DocViewerHeaderComponent {
 
   zoomOut(): void {
     this.zoomedOut.emit();
+  }
+
+  save(): void {
+    this.saved.emit();
   }
 }

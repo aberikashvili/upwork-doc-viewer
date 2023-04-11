@@ -1,5 +1,7 @@
 export interface NotePositionEntry {
-  top: string;
+  top: 0;
 
-  left: string;
+  left: 0;
+
+  transform: 'none';
 }

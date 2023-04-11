@@ -14,8 +14,9 @@ export class DocViewerNoteComponent {
 
   get position(): NotePositionEntry {
     return {
-      top: `${this.note.posY}px`,
-      left: `${this.note.posX}px`,
+      transform: 'none',
+      top: 0,
+      left: 0,
     } as NotePositionEntry;
   }
 
@@ -33,5 +34,13 @@ export class DocViewerNoteComponent {
 
   noteCreated(note: DocumentNoteEntry): void {
     this.note = { ...this.note, ...note };
+  }
+
+  dragEnded(dragEvent: any): void {
+    this.note = {
+      ...this.note,
+      posX: this.note.posX + dragEvent.distance.x,
+      posY: this.note.posY + dragEvent.distance.y,
+    };
   }
 }

@@ -54,4 +54,22 @@ export class DocViewerComponent implements OnInit, OnDestroy {
 
     this.pagesWrapper.setZoom(this.currentZoom);
   }
+
+  onSaved(): void {
+    const dataToSave = this.documentObj.pages
+      .map((page) => {
+        const notes = page.notes.map((note) => ({
+          page: page.index,
+          type: note.type,
+          content: note.content,
+          coords: { x: note.posX, y: note.posY },
+        }));
+
+        return notes;
+      })
+      .map((item) => item[0])
+      .filter((item) => !!item);
+
+    console.log('Data to save', dataToSave);
+  }
 }

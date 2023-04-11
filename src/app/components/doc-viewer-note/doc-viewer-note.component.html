@@ -1,7 +1,11 @@
 <div
+  cdkDrag
+  cdkDragBoundary=".page"
   class="note"
   [ngStyle]="position"
   [ngClass]="{ 'note--edit-mode': note.editMode }"
+  (cdkDragEnded)="dragEnded($event)"
+  [cdkDragFreeDragPosition]="{ x: note.posX, y: note.posY }"
 >
   <div class="note__delete" (click)="remove()">x</div>
 

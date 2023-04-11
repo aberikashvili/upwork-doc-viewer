@@ -8,6 +8,7 @@ import {
 import * as uuid from 'uuid';
 import { DocumentNoteEntry } from 'src/app/models/document-note-entry.model';
 import { DocumentPageEntry } from 'src/app/models/document-page-entry.model';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-doc-viewer-page',
@@ -18,7 +19,10 @@ import { DocumentPageEntry } from 'src/app/models/document-page-entry.model';
 export class DocViewerPageComponent implements OnInit {
   @Input() page!: DocumentPageEntry;
 
-  constructor(private _element: ElementRef) {}
+  constructor(
+    private _element: ElementRef,
+    private _noteService: NoteService
+  ) {}
 
   ngOnInit(): void {
     console.log('PAGE', this.page);
@@ -26,7 +30,11 @@ export class DocViewerPageComponent implements OnInit {
 
   pageCliked(event: MouseEvent): void {
     const { pageX, pageY } = event;
-    const pos = this._calculatePosX(pageX, pageY);
+    const pos = this._noteService.calculatePosition(
+      pageX,
+      pageY,
+      this._element.nativeElement.getBoundingClientRect()
+    );
 
     this.page.notes.push({
       uuid: uuid.v4(),
@@ -46,17 +54,5 @@ export class DocViewerPageComponent implements OnInit {
     const noteIndex = this.page.notes.indexOf(note);
 
     this.page.notes.splice(noteIndex, 1);
-  }
-
-  private _calculatePosX(
-    pageX: number,
-    pageY: number
-  ): { x: number; y: number } {
-    const elementRect = this._element.nativeElement.getBoundingClientRect();
-    const bodyRect = document.body.getBoundingClientRect();
-    const elementOffsetTop = elementRect.top - bodyRect.top;
-    const elementOffsetLeft = elementRect.left - bodyRect.left;
-
-    return { x: pageX - elementOffsetLeft, y: pageY - elementOffsetTop };
   }
 }

@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -7,7 +9,6 @@ import { DocViewerHeaderComponent } from './components/doc-viewer-header/doc-vie
 import { DocViewerPagesComponent } from './components/doc-viewer-pages/doc-viewer-pages.component';
 import { DocViewerPageComponent } from './components/doc-viewer-page/doc-viewer-page.component';
 import { DocViewerNoteComponent } from './components/doc-viewer-note/doc-viewer-note.component';
-import { FormsModule } from '@angular/forms';
 import { AsPercentPipe } from './pipes/as-percent.pipe';
 import { DocViewerNoteWizardComponent } from './components/doc-viewer-note-wizard/doc-viewer-note-wizard.component';
 
@@ -25,7 +26,7 @@ import { DocViewerNoteWizardComponent } from './components/doc-viewer-note-wizar
     // Pipes
     AsPercentPipe,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, DragDropModule],
   providers: [],
   bootstrap: [AppComponent],
 })

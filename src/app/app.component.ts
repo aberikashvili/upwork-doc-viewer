@@ -1,45 +1,26 @@
-import { Component } from '@angular/core';
-import * as uuid from 'uuid';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+
 import { DocumentEntry } from './models/document-entry.model';
+import { DataService } from './services/data.service';
+import { BaseComponent } from './components/base.component';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  doc = {
-    title: 'test doc',
-    pages: [
-      {
-        index: 1,
-        image: '/assets/1.png',
-        notes: [
-          {
-            uuid: uuid.v4(),
-            type: 'text',
-            content: 'test note',
-            posX: 100,
-            posY: 100,
-          },
-        ],
-      },
-      {
-        index: 2,
-        image: '/assets/2.png',
-        notes: [
-          {
-            uuid: uuid.v4(),
-            type: 'text',
-            content: '2nd page note',
-            posX: 340,
-            posY: 230,
-          },
-        ],
-      },
-      { index: 3, image: '/assets/3.png', notes: [] },
-      { index: 4, image: '/assets/4.png', notes: [] },
-      { index: 5, image: '/assets/5.png', notes: [] },
-    ],
-  } as DocumentEntry;
+export class AppComponent extends BaseComponent implements OnInit, OnDestroy {
+  doc!: DocumentEntry;
+
+  constructor(private _dataService: DataService) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this._dataService
+      .loadData()
+      .pipe(takeUntil(this._destroy$$))
+      .subscribe((data: DocumentEntry) => (this.doc = data));
+  }
 }
