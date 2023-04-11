@@ -9,6 +9,7 @@ import { DocViewerPageComponent } from './components/doc-viewer-page/doc-viewer-
 import { DocViewerNoteComponent } from './components/doc-viewer-note/doc-viewer-note.component';
 import { FormsModule } from '@angular/forms';
 import { AsPercentPipe } from './pipes/as-percent.pipe';
+import { DocViewerNoteWizardComponent } from './components/doc-viewer-note-wizard/doc-viewer-note-wizard.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AsPercentPipe } from './pipes/as-percent.pipe';
     DocViewerPagesComponent,
     DocViewerPageComponent,
     DocViewerNoteComponent,
+    DocViewerNoteWizardComponent,
 
     // Pipes
     AsPercentPipe,

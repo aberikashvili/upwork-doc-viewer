@@ -10,4 +10,6 @@ export interface DocumentNoteEntry {
   posX: number;
 
   posY: number;
+
+  editMode: boolean;
 }

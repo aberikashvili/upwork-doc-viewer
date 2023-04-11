@@ -1,0 +1,22 @@
+<div class="wizard">
+  <div *ngIf="!noteType" class="wizard__options">
+    <div class="wizard__option">
+      <button (click)="setType('text')">Text</button>
+    </div>
+    <div class="wizard__option">
+      <button (click)="setType('image')">Image</button>
+    </div>
+  </div>
+
+  <div *ngIf="noteType === 'text'" class="wizard__text">
+    <input
+      type="text"
+      [(ngModel)]="noteValue"
+      (keydown.enter)="enterPresset()"
+    />
+  </div>
+
+  <div *ngIf="noteType === 'image'" class="wizard__image">
+    <input #fileChooser (change)="fileSelected($event)" type="file" />
+  </div>
+</div>

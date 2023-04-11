@@ -26,11 +26,7 @@ export class DocViewerPagesComponent implements OnInit {
   setZoom(zoom: number): void {
     const browser = ['webkit', 'moz', 'ms', 'o'];
     const scale = 'scale(' + zoom / 100 + ')';
-    let origin = '0% 0%';
-
-    if (zoom > 100) {
-      origin = '50% 0%';
-    }
+    const origin = 'top center';
 
     for (var i = 0; i < browser.length; i++) {
       this.pagesWrapperDiv.nativeElement.style[browser[i] + 'Transform'] =

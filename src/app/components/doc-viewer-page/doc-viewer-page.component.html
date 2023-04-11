@@ -1,5 +1,6 @@
-<div class="page" (click)="pageCliked($event)">
+<div class="page">
   <img
+    (click)="pageCliked($event)"
     [attr.src]="page.image"
     [attr.alt]="'Page number ' + page.index + ' cannot be displayed!'"
   />
