@@ -1,0 +1,13 @@
+<div class="page">
+  <img
+    (click)="pageCliked($event)"
+    [attr.src]="page.image"
+    [attr.alt]="'Page number ' + page.index + ' cannot be displayed!'"
+  />
+
+  <app-doc-viewer-note
+    *ngFor="let note of page.notes"
+    [note]="note"
+    (removed)="noteRemoved($event)"
+  ></app-doc-viewer-note>
+</div>

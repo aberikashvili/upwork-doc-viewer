@@ -1,0 +1,11 @@
+<div class="header header--green">
+  <div class="header__title">
+    {{ title }}
+  </div>
+  <div class="header__actions">
+    <button (click)="zoomIn()">+</button>
+    <span class="header__zoom">{{ percentage | asPercent }}</span>
+    <button (click)="zoomOut()">-</button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>

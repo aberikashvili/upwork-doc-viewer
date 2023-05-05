@@ -1,0 +1,26 @@
+<div
+  cdkDrag
+  cdkDragBoundary=".page"
+  class="note"
+  [ngStyle]="position"
+  [ngClass]="{ 'note--edit-mode': note.editMode }"
+  (cdkDragEnded)="dragEnded($event)"
+  [cdkDragFreeDragPosition]="{ x: note.posX, y: note.posY }"
+>
+  <div class="note__delete" (click)="remove()">x</div>
+
+  <app-doc-viewer-note-wizard
+    *ngIf="note.editMode"
+    (created)="noteCreated($event)"
+  ></app-doc-viewer-note-wizard>
+
+  <ng-container *ngIf="!note.editMode">
+    <ng-container *ngIf="isText">
+      {{ note.content }}
+    </ng-container>
+
+    <ng-container *ngIf="isImage">
+      <img [attr.src]="note.content" class="note__image" />
+    </ng-container>
+  </ng-container>
+</div>

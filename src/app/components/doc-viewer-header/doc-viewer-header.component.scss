@@ -1,0 +1,35 @@
+@import "typography";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+
+  &--green {
+    background-color: #0cdb95;
+  }
+
+  &__title {
+    color: #ffffff;
+    font-size: $font-size-title;
+    font-weight: bold;
+  }
+
+  &__actions {
+    button {
+      margin: 0 2px;
+    }
+  }
+
+  &__zoom {
+    background-color: #46ffc1;
+    margin: 0 5px;
+    padding: 5px;
+    font-size: $font-size-regular;
+    border-radius: 4px;
+    color: #333333;
+  }
+}

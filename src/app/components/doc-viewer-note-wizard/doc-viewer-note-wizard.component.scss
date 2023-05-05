@@ -1,0 +1,12 @@
+.wizard {
+  &__options {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__option {
+    button {
+      margin: 0 2px;
+    }
+  }
+}
